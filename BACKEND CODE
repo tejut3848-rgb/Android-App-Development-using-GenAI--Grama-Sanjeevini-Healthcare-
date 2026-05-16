@@ -1,1 +1,7 @@
-
+{
+  "medicineName": "Insulin",
+  "shopName": "Sri Medicals",
+  "village": "Village B",
+  "quantity": 5,
+  "lifeSaving": true
+}
