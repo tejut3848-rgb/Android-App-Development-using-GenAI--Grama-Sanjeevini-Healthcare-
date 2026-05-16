@@ -1,1 +1,24 @@
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
 
+admin.initializeApp();
+
+exports.expiryAlert = functions.pubsub
+    .schedule('every 24 hours')
+    .onRun(async (context) => {
+
+        const db = admin.firestore();
+
+        const medicines = await db.collection('medicines').get();
+
+        medicines.forEach(doc => {
+
+            const data = doc.data();
+
+            console.log(
+              `Check expiry for ${data.medicineName}`
+            );
+        });
+
+        return null;
+    });
